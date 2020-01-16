@@ -10,5 +10,25 @@
     "isbn": "",
     "language": "zh-hans",
     "direction": "ltr",
-    "gitbook": ">=3.0.0"
+    "gitbook": ">=3.0.0",
+    "plugins": [
+        "back-to-top-button", "chapter-fold", "favicon", "hide-element", "lightbox", "-highlight", "prism", "-lunr", "-search", "search-pro", "splitter"
+    ],
+    "pluginsConfig": {
+        "favicon": {
+            "shortcut": "favicon.ico",
+            "bookmark": "favicon.ico",
+            "appleTouch": "favicon.png",
+            "appleTouchMore": {
+                "120x120": "favicon-120x120.png",
+                "180x180": "favicon-180x180.png"
+            }
+        },
+        "hide-element": {
+            "elements": [".gitbook-link"]
+        },
+        "prism": {
+            "css": ["prismjs/themes/prism-okaidia.css"]
+        }
+    }
 }
