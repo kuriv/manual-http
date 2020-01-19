@@ -298,42 +298,64 @@
 
 ## 5xx 服务器错误
 
+> 表示服务器无法完成明显有效的请求。这类状态码代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理。除非这是一个 HEAD 请求，否则服务器应当包含一个解释当前错误状态以及这个状况是临时的还是永久的解释信息实体。浏览器应当向用户展示任何在当前响应中被包含的实体。这些状态码适用于任何响应方法。
+
 ### 500 Internal Server Error
 
 ![500 Internal Server Error](./HTTP 状态码/500 Internal Server Error.jpg)
+
+> 通用错误消息，服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。没有给出具体错误信息。
 
 ### 501 Not Implemented
 
 ![501 Not Implemented](./HTTP 状态码/501 Not Implemented.jpg)
 
+> 服务器不支持当前请求所需要的某个功能。服务器无法识别请求的方法，并且无法支持其对任何资源的请求。
+
 ### 502 Bad Gateway
 
 ![502 Bad Gateway](./HTTP 状态码/502 Bad Gateway.jpg)
+
+> 作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应。
 
 ### 503 Service Unavailable
 
 ![503 Service Unavailable](./HTTP 状态码/503 Service Unavailable.jpg)
 
+> 由于临时的服务器维护或者过载，服务器当前无法处理请求。这个状况是暂时的，并且将在一段时间以后恢复。
+
 ### 504 Gateway Timeout
 
 ![504 Gateway Timeout](./HTTP 状态码/504 Gateway Timeout.jpg)
+
+> 作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器或者辅助服务器收到响应。
 
 ### 506 Variant Also Negotiates
 
 ![506 Variant Also Negotiates](./HTTP 状态码/506 Variant Also Negotiates.jpg)
 
+> 由《透明内容协商协议》扩展，代表服务器存在内部配置错误，被请求的协商变元资源被配置为在透明内容协商中使用自己，因此在一个协商处理中不是一个合适的重点。
+
 ### 507 Insufficient Storage
 
 ![507 Insufficient Storage](./HTTP 状态码/507 Insufficient Storage.jpg)
+
+> 服务器无法存储完成请求所必须的内容。这个状况被认为是临时的。
 
 ### 508 Loop Detected
 
 ![508 Loop Detected](./HTTP 状态码/508 Loop Detected.jpg)
 
+> 服务器在处理请求时陷入死循环。
+
 ### 510 Not Extended
 
 ![510 Not Extended](./HTTP 状态码/510 Not Extended.jpg)
 
+> 获取资源所需要的策略并没有被满足。
+
 ### 511 Network Authentication Required
 
 ![511 Network Authentication Required](./HTTP 状态码/511 Network Authentication Required.jpg)
+
+> 客户端需要进行身份验证才能获得网络访问权限，旨在限制用户群访问特定网络。
