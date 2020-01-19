@@ -174,7 +174,7 @@
 
 ![401 Unauthorized](./HTTP 状态码/401 Unauthorized.jpg)
 
-> 请求要求用户的身份认证。
+> 该状态码表示当前请求需要用户验证。该响应必须包含一个适用于被请求资源的 WWW-Authenticate 信息头用以询问用户信息。客户端可以重复提交一个包含恰当的 Authorization 头信息的请求。如果当前请求已经包含了 Authorization 证书，那么 401 响应代表着服务器验证已经拒绝了那些证书。如果 401 响应包含了与前一个响应相同的身份验证询问，且浏览器已经至少尝试了一次验证，那么浏览器应当向用户展示响应中包含的实体信息，因为这个实体信息中可能包含了相关诊断信息。
 
 ### 402 Payment Required
 
@@ -192,19 +192,19 @@
 
 ![404 Not Found](./HTTP 状态码/404 Not Found.jpg)
 
-> 服务器无法根据客户端的请求找到资源。
+> 请求失败，请求所希望得到的资源未被在服务器上发现，但允许用户的后续请求。
 
 ### 405 Method Not Allowed
 
 ![405 Method Not Allowed](./HTTP 状态码/405 Method Not Allowed.jpg)
 
-> 客户端请求中的方法被禁止。
+> 请求行中指定的请求方法不能被用于请求相应的资源。该响应必须返回一个 Allow 头信息用以表示出当前资源能够接受的请求方法的列表。例如，需要通过 POST 呈现数据的表单上的 GET 请求，或只读资源上的 PUT 请求。
 
 ### 406 Not Acceptable
 
 ![406 Not Acceptable](./HTTP 状态码/406 Not Acceptable.jpg)
 
-> 服务器无法根据客户端请求的内容特性完成请求。
+> 请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体，该请求不可接受。
 
 ### 408 Request Timeout
 
@@ -222,7 +222,7 @@
 
 ![410 Gone](./HTTP 状态码/410 Gone.jpg)
 
-> 表示所请求的资源将不再可用，当资源被有意地删除并且资源应被清除时，应该使用这个。
+> 表示所请求的资源将不再可用，当资源被有意地删除并且资源应被清除时，应该使用这个状态码。在收到 410 状态码后，用户应停止再次请求资源。
 
 ### 411 Length Required
 
@@ -234,67 +234,97 @@
 
 ![412 Precondition Failed](./HTTP 状态码/412 Precondition Failed.jpg)
 
-> 
+> 服务器在验证请求的头字段中给出先决条件时，没能满足其中的一个或多个。这个状态码允许客户端在获取资源时在请求的元信息中设置先决条件，以此避免该请求方法被应用到其希望的内容以外的资源上。
 
 ### 413 Request Entity Too Large
 
 ![413 Request Entity Too Large](./HTTP 状态码/413 Request Entity Too Large.jpg)
 
+> 表示服务器拒绝处理当前请求，因为该请求提交的实体数据大小超过了服务器愿意或者能够处理的范围。此种情况下，服务器可以关闭连接以免客户端继续发送此请求。
+
 ### 414 Request-URI Too Long
 
 ![414 Request-URI Too Long](./HTTP 状态码/414 Request-URI Too Long.jpg)
+
+> 表示请求的 URI 长度超过了服务器能够解释的长度，因此服务器拒绝对该请求提供服务。通常将太多数据的结果编码为 GET 请求的查询字符串，在这种情况下，应将其转换为 POST 请求。
 
 ### 415 Unsupported Media Type
 
 ![415 Unsupported Media Type](./HTTP 状态码/415 Unsupported Media Type.jpg)
 
+> 对于当前请求的方法和所请求的资源，请求中提交的互联网媒体类型并不是服务器中所支持的格式，因此请求被拒绝。例如，客户端将图像上传格式为 svg ，但服务器要求图像使用上传格式为 jpg 。
+
 ### 416 Requested Range Not Satisfiable
 
 ![416 Requested Range Not Satisfiable](./HTTP 状态码/416 Requested Range Not Satisfiable.jpg)
+
+> 客户端已经要求文件的一部分，但服务器不能提供该部分。例如，如果客户端要求文件的一部分超出文件尾端。
 
 ### 417 Expectation Failed
 
 ![417 Expectation Failed](./HTTP 状态码/417 Expectation Failed.jpg)
 
+> 在请求头 Expect 中指定的预期内容无法被服务器满足。
+
 ### 418 I'm a teapot
 
 ![418 I'm a teapot](./HTTP 状态码/418 I'm a teapot.jpg)
+
+> 彩蛋。
 
 ### 421 Misdirected Request
 
 ![421 Misdirected Request](./HTTP 状态码/421 Misdirected Request.jpg)
 
+> 该请求针对的是无法产生响应的服务器。
+
 ### 422 Unprocessable Entity
 
 ![422 Unprocessable Entity](./HTTP 状态码/422 Unprocessable Entity.jpg)
+
+> 请求格式正确，但是由于含有语义错误，无法响应。
 
 ### 423 Locked
 
 ![423 Locked](./HTTP 状态码/423 Locked.jpg)
 
+> 当前资源被锁定。
+
 ### 424 Failed Dependency
 
 ![424 Failed Dependency](./HTTP 状态码/424 Failed Dependency.jpg)
+
+> 由于之前的某个请求发生的错误，导致当前请求失败。
 
 ### 425 Too Early
 
 ![425 Too Early](./HTTP 状态码/425 Too Early.jpg)
 
+> 服务器拒绝处理在 Early Data 中的请求，以规避可能的重放攻击。
+
 ### 426 Upgrade Required
 
 ![426 Upgrade Required](./HTTP 状态码/426 Upgrade Required.jpg)
+
+> 客户端应切换到 Upgrade 头字段中给出的不同协议，如 TLS/1.0 。
 
 ### 429 Too Many Requests
 
 ![429 Too Many Requests](./HTTP 状态码/429 Too Many Requests.jpg)
 
+> 用户在给定的时间内发送了太多的请求，旨在用于网络限速。
+
 ### 431 Request Header Fields Too Large
 
 ![431 Request Header Fields Too Large](./HTTP 状态码/431 Request Header Fields Too Large.jpg)
 
+> 服务器不愿处理请求，因为一个或多个头字段过大。
+
 ### 451 Unavailable For Legal Reasons
 
 ![451 Unavailable For Legal Reasons](./HTTP 状态码/451 Unavailable For Legal Reasons.jpg)
+
+> 因法律的要求而被拒绝。
 
 ## 5xx 服务器错误
 
