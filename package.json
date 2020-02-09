@@ -1,6 +1,6 @@
 {
   "name": "manual-http",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "HTTP 手册",
   "main": "index.js",
   "directories": {
