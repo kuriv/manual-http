@@ -1,13 +1,14 @@
 {
   "name": "manual-http",
-  "version": "1.0.3",
-  "description": "HTTP 手册",
+  "version": "1.0.4",
+  "description": "HTTP 全称 HyperText Transfer Protocol ，超文本传输协议。",
   "main": "index.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gitbook serve ./ ./book"
   },
   "repository": {
     "type": "git",
